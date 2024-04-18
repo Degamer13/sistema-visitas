@@ -9,7 +9,7 @@ class CreateVisitasTable extends Migration
     public function up()
     {
         Schema::create('visitas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('cedula')->unique();
