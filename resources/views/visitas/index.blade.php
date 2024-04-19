@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="pull-left">
-            <h2>Tabla de Visitas</h2>
+            <h2>Tabla de Registro de Visitas</h2>
         </div>
 
     </div>
