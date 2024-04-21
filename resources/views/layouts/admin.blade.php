@@ -13,6 +13,7 @@
         <script src="{{ asset('js2/admin.js') }}"></script>
      <link rel="stylesheet" href="{{ asset('assets/demo/') }}"> <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
@@ -57,8 +58,8 @@
                               Inicio
                             </a>
                             @can('user-list')
-                                
-                       
+
+
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user fa-fw"></i></div>
                                Usuarios
@@ -69,13 +70,13 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                  <li>
                                     @can('user-create')
-                                        
-                              
+
+
                                     <a class="dropdown-item" href="{{ route('users.create') }}">Registrar Usuario</a></li>
                                     @endcan<li>
-                                        
+
                                        @can('user-list')
-                                           
+
                                        <a class="dropdown-item" href="/users">Visualizar Usuarios</a>@endcan</li>
                                 </nav>
                             </div>
@@ -105,8 +106,8 @@
 
                     </div>
                     @can('visita-list')
-                        
-                    
+
+
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsis" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-child fa-fw"></i></div>
                          Visitas
@@ -128,6 +129,28 @@
 
 
             </div>
+
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsiss" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-child fa-fw"></i></div>
+                         Control de Entradas y Salidad
+                        <div class="sb-sidenav-collapse-arrow"></div>
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                       </a>
+                    <div class="collapse" id="collapseLayoutsiss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <li>
+
+
+
+                                <a class="dropdown-item" href="{{ route('controles.create') }}">Registrar Entradas y Salidas</a></li>
+                               <li>
+
+                                 <a class="dropdown-item" href="/controles">Visualizar Entradas y Salidas</a></li>
+                        </nav>
+
+
+            </div>
+
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -167,6 +190,13 @@
 
 
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
+  <script>
+    $(document).ready(function() {
+      $('#opciones').select2();
+    });
+  </script>
     </body>
 </html>
