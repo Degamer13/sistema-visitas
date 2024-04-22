@@ -20,8 +20,8 @@
         <form class="">
 
             <div class="input-group mb-3" >
-        <input type="text" class="form-control"   name="buscarpor" value="{{$buscarpor}}"   type="search" placeholder="Buscar" aria-label="Search" aria-describedby="button-addon2">
-        <div class="input-group-append">
+        <input type="text" class="form-control"   name="buscarpor" value="{{$buscarpor}}"   type="search" placeholder="Buscar" aria-label="Search" aria-describedby="button-addon2" required
+        > <div class="input-group-append">
           <button class="btn btn-success"  id="button-addon2" type="submit"><i class='fas fa-search'></i></button>
         </div>
       </div>

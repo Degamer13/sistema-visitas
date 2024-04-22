@@ -10,7 +10,7 @@
     </div>
 </div>
 @if (Session::get('success'))
-    <div class="alert alert-success mt-2 alert-dismissible fade show" role="alert"">
+    <div class="alert alert-success mt-2 alert-dismissible fade show" role="alert">
         <strong>{{Session::get('success')}}</strong>
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -20,7 +20,7 @@
         <form class="">
 
             <div class="input-group mb-3" >
-        <input type="text" class="form-control"   name="buscarpor" value="{{$buscarpor}}"   type="search" placeholder="Buscar" aria-label="Search" aria-describedby="button-addon2">
+        <input type="text" class="form-control"   name="buscarpor" value="{{$buscarpor}}"   type="search" placeholder="Buscar" aria-label="Search" aria-describedby="button-addon2" required>
         <div class="input-group-append">
           <button class="btn btn-success"  id="button-addon2" type="submit"><i class='fas fa-search'></i></button>
         </div>
