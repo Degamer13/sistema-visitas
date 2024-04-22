@@ -36,30 +36,26 @@ class ControlDeVisitaController extends Controller
         return view('controles.index', compact('controles', 'cedula', 'fechaInicio', 'fechaFin'));
     }
     public function create()
+
     {
-        return view('controles.create');
+        $controles = Visita::all();
+        return view('controles.create', compact('controles'));
     }
     public function store(Request $request)
     {
         // Validar los datos del formulario
         $request->validate([
-            'campo1' => 'required',
-            'campo2' => 'required',
+            'hora_entrada' => 'required',
+            'hora_salida',
+            'id_visita' => 'required',
+
             // Agrega las reglas de validación para tus campos
         ]);
 
         // Crear una nueva instancia de ControlDeVisita
-        $control = new ControlDeVisita;
-        // Asignar los valores de los campos
-        $control->campo1 = $request->input('campo1');
-        $control->campo2 = $request->input('campo2');
-        // Asigna los valores para tus campos
-
-        // Guardar el nuevo ControlDeVisita en la base de datos
-        $control->save();
-
+        ControlDeVisita::create($request->all());
         // Redireccionar a la página de éxito o mostrar un mensaje
-        return redirect()->route('controles.index')->with('success', 'Control de visita creado exitosamente');
+        return redirect()->route('controles.index')->with('success', 'Hora registrada exitosamente');
     }
 
     public function show($id)
@@ -73,35 +69,30 @@ class ControlDeVisitaController extends Controller
 
     public function edit($id)
     {
+        $controles = Visita::all();
         // Obtener el ControlDeVisita por su ID
         $control = ControlDeVisita::findOrFail($id);
-
+    
         // Devolver la vista de edición con los datos del ControlDeVisita
-        return view('controles.edit', compact('controles'));
+        return view('controles.edit', compact('controles', 'control'));
     }
 
     public function update(Request $request, $id)
     {
         // Validar los datos del formulario
         $request->validate([
-            'campo1' => 'required',
-            'campo2' => 'required',
+            'hora_entrada' => 'required',
+            'hora_salida',
+            'id_visita' => 'required',
             // Agrega las reglas de validación para tus campos
         ]);
 
         // Obtener el ControlDeVisita por su ID
         $control = ControlDeVisita::findOrFail($id);
-
-        // Actualizar los valores de los campos
-        $control->campo1 = $request->input('campo1');
-        $control->campo2 = $request->input('campo2');
-        // Actualiza los valores para tus campos
-
-        // Guardar los cambios en el ControlDeVisita
-        $control->save();
+        $control->update($request->all());
 
         // Redireccionar a la página de éxito o mostrar un mensaje
-        return redirect()->route('controles.index')->with('success', 'Control de visita actualizado exitosamente');
+        return redirect()->route('controles.index')->with('success', 'Hora actualizada exitosamente');
     }
 
     public function destroy($id)
@@ -113,7 +104,7 @@ class ControlDeVisitaController extends Controller
         $control->delete();
 
         // Redireccionar a la página de éxito o mostrar un mensaje
-        return redirect()->route('controles.index')->with('success', 'Control de visita eliminado exitosamente');
+        return redirect()->route('controles.index')->with('success', 'Hora eliminada exitosamente');
     }
 
     // ...

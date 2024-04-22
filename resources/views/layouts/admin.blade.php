@@ -14,6 +14,9 @@
      <link rel="stylesheet" href="{{ asset('assets/demo/') }}"> <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+
+
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
@@ -140,7 +143,7 @@
                         <nav class="sb-sidenav-menu-nested nav">
                             <li>
 
-                     
+
 
 
 

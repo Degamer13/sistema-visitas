@@ -15,24 +15,30 @@
         <div class="row">
             <div class="col-md-4 mb-3">
                 <label for="cedula" class="form-label">Cédula:</label>
-                <input type="text" class="form-control" id="cedula" name="cedula" value="{{ $cedula }}" placeholder="Ingrese la cédula">
+                <input type="text" class="form-control" id="cedula" name="cedula" value="{{ $cedula }}" placeholder="Ingrese la cédula" required>
             </div>
             <div class="col-md-4 mb-3">
                 <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
-                <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{ $fechaInicio }}">
+                <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" value="{{ $fechaInicio }}" required>
             </div>
             <div class="col-md-4 mb-3">
                 <label for="fecha_fin" class="form-label">Fecha de fin:</label>
-                <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" value="{{ $fechaFin }}">
+                <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" value="{{ $fechaFin }}" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                <button type="submit" class="btn btn-primary">Buscar</button>
+                <button class="btn btn-success"  id="button-addon2" type="submit"><i class='fas fa-search'></i></button>
             </div>
         </div>
     </form>
-
+    
+    @if (Session::get('success'))
+    <div class="alert alert-success mt-2 alert-dismissible fade show" role="alert"">
+        <strong>{{Session::get('success')}}</strong>
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <!-- Tabla de visitas -->
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -53,6 +59,14 @@
                 <td>{{ $control->created_at }}</td>
                 <td>
                     <!-- Acciones -->
+                    <a href="{{ route('controles.edit', $control->id) }}" class="btn btn-primary "><i class='fas fa-pen'></i></a>
+                    <form method="POST" action="{{ route('controles.destroy', $control->id) }}" style="display:inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">
+                            <i class='fas fa-trash-alt'></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             @endforeach

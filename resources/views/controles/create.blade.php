@@ -27,28 +27,29 @@
 
                             <div class="form-group">
                                 <label for="nombre">Hora de Entrada</label>
-                                <input type="time" name="nombre" id="nombre" class="form-control" >
+                                <input type="time" name="hora_entrada" id="nombre" class="form-control" >
                             </div>
 
                             <div class="form-group">
                                 <label for="apellido">Hora de Salida</label>
-                                <input type="time" name="apellido" id="apellido" class="form-control" >
+                                <input type="time" name="hora_salida" id="apellido" class="form-control" >
                             </div>
 
 
                             <div class="form-group">
-                            <label for="opciones">Opciones:</label>
-  <select id="opciones" name="opciones" class="form-select">
-    <option value="opcion1">Habla claro menor XD PROBANDO EN MI PC</option>
+                            <label for="opciones">Seleccione la Cedula:</label>
+  <select id="opciones" name="id_visita" class="form-select">
+    @foreach ($controles as $control)
+       
+    <option value="{{ $control->id }}">{{ $control->nombre }} {{ $control->apellido }} {{ $control->cedula }}</option>
+              
+                    <!-- Acciones -->
+       
+            @endforeach
 
 
-                            <div class="form-group">
-                            <label for="opciones">Opciones:</label>
-  <select id="opciones" name="opciones" class="form-select">
-    <option value="opcion1">Habla claro menor XD</option>
 
-    <option value="opcion2">Opción 2</option>
-    <option value="opcion3">Opción 3</option>
+
   </select>
                             </div>
 
