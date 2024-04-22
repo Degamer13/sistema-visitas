@@ -50,7 +50,6 @@ class ControlDeVisitaController extends Controller
 
         // Crear una nueva instancia de ControlDeVisita
         $control = new ControlDeVisita;
-
         // Asignar los valores de los campos
         $control->campo1 = $request->input('campo1');
         $control->campo2 = $request->input('campo2');

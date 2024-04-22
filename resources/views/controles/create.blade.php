@@ -40,6 +40,13 @@
                             <label for="opciones">Opciones:</label>
   <select id="opciones" name="opciones" class="form-select">
     <option value="opcion1">Habla claro menor XD PROBANDO EN MI PC</option>
+
+
+                            <div class="form-group">
+                            <label for="opciones">Opciones:</label>
+  <select id="opciones" name="opciones" class="form-select">
+    <option value="opcion1">Habla claro menor XD</option>
+
     <option value="opcion2">Opción 2</option>
     <option value="opcion3">Opción 3</option>
   </select>

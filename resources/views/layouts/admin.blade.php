@@ -140,6 +140,8 @@
                         <nav class="sb-sidenav-menu-nested nav">
                             <li>
 
+                     
+
 
 
                                 <a class="dropdown-item" href="{{ route('controles.create') }}">Registrar Entradas y Salidas</a></li>
@@ -149,7 +151,6 @@
                         </nav>
 
 
-            </div>
 
                 </nav>
             </div>
