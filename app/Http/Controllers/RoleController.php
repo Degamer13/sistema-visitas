@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Interface\IPDF;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
@@ -48,9 +49,10 @@ class RoleController extends Controller
             ->with('success', 'Rol creado exitosamente');
     }
 
-    public function show($id)
+    public function show($id, IPDF $pdf)
     {
         $role = Role::find($id);
+        $pdf->TablaGenerica($role);
         $rolePermissions = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=", "permissions.id")
             ->where("role_has_permissions.role_id", $id)
             ->get();
