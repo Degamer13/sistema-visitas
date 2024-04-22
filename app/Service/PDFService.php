@@ -13,21 +13,9 @@ class PDFService implements IPDF
     {
         $this->_pdf = new PDF('P', 'mm', 'letter');
     }
-    private function HeaderPdf(): void
-    {
-        $this->_pdf->AddPage();
-        $this->_pdf->SetFont('Arial', 'B', 12);
-        $filepath = public_path() . '/assets/pdf/icon.jpg';
-        if (file_exists($filepath)) {
-            $this->_pdf->Image($filepath, '10','10','30','30');
-        }
-        $this->_pdf->Cell(0,10,"Fecha: ". date("d/m/Y"), 0, 1,'R');
-        $this->_pdf->Cell(0,10,"Hora: ". date("h:i a"), 0, 1,'R');
-        $this->_pdf->ln();
-    }
     public function TablaGenerica(array $objetos, string $name) : void
     {
-        $this->HeaderPdf();
+        $this->_pdf->AddPage();
         $this->_pdf->AliasNbPages();
         $this->_pdf->SetFont('Arial', 'B', 16);
 
