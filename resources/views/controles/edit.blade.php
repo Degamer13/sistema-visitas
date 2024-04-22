@@ -35,7 +35,7 @@
 
                         <div class="form-group">
                             <label for="opciones">Seleccione la Cedula:</label>
-                            <select id="opciones" name="id_visita" class="form-select">
+                            <select  class="form-select"  name="id_visita" id="basic-usage">
                                 @foreach ($controles as $controlOption)
                                 <option value="{{ $controlOption->id }}" {{ $control->id_visita == $controlOption->id ? 'selected' : '' }}>
                                     {{ $controlOption->nombre }} {{ $controlOption->apellido }} {{ $controlOption->cedula }}

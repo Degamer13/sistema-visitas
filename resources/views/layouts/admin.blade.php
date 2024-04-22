@@ -13,10 +13,20 @@
         <script src="{{ asset('js2/admin.js') }}"></script>
      <link rel="stylesheet" href="{{ asset('assets/demo/') }}"> <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-      
 
-        <link rel="stylesheet" href="{{ asset('css2/select2.min.css') }}">
-       
+
+      <!-- Styles -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+<!-- Or for RTL support -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
@@ -133,8 +143,8 @@
 
             </div>
             @can('horas-list')
-                
-           
+
+
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsiss" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-child fa-fw"></i></div>
                          Control de Entradas y Salidad
@@ -147,13 +157,13 @@
 
 
                                 @can('horas-create')
-                 
+
                                 <a class="dropdown-item" href="{{ route('controles.create') }}">Registrar Entradas y Salidas</a></li>
                                 @endcan
                                  <li>
                                     @can('horas-list')
-                                        
-                                   
+
+
                                  <a class="dropdown-item" href="/controles">Visualizar Entradas y Salidas</a>
                                 </li>
                                  @endcan
@@ -200,13 +210,13 @@
 
 
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="{{ asset('js2/select2.min.js') }}"></script>
+     <script>
+        $( '#basic-usage' ).select2( {
+    theme: "bootstrap-5",
+    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+    placeholder: $( this ).data( 'placeholder' ),
+} );
+     </script>
 
-  <script>
-    $(document).ready(function() {
-      $('#opciones').select2();
-    });
-  </script>
     </body>
 </html>

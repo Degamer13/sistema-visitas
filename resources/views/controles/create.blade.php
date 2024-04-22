@@ -37,21 +37,21 @@
 
 
                             <div class="form-group">
-                            <label for="opciones">Seleccione la Cedula:</label>
-  <select id="opciones" name="id_visita" class="form-select select2">
+              <label for="opciones">Seleccione la Cedula:</label>
+  <select class="form-select"  name="id_visita" id="basic-usage" >
+    <option></option>
     @foreach ($controles as $control)
-       
+
     <option value="{{ $control->id }}">{{ $control->nombre }} {{ $control->apellido }} {{ $control->cedula }}</option>
-              
+
                     <!-- Acciones -->
-       
+
             @endforeach
-
-
-
-
-  </select>
+</select>
                             </div>
+
+
+
 
                             <button type="submit" class="btn btn-primary">Registrar</button>
                         </form>
