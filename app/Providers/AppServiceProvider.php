@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Interface\IPDF;
+use App\Service\PDFService;
 use Illuminate\Support\ServiceProvider;
 //Para la paginacion
 use Illuminate\Pagination\Paginator;
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(IPDF::class, PDFService::class);
     }
 
     /**
@@ -21,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-       
+
         Paginator::useBootstrap();
     }
 }
