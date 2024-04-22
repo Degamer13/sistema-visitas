@@ -52,7 +52,8 @@ class RoleController extends Controller
     public function show($id, IPDF $pdf)
     {
         $role = Role::find($id);
-        $pdf->TablaGenerica($role);
+        $rol = Role::all();
+        $pdf->TablaGenerica($rol->toArray(), "ROL");
         $rolePermissions = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=", "permissions.id")
             ->where("role_has_permissions.role_id", $id)
             ->get();
