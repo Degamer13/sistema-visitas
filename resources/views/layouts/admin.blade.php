@@ -13,10 +13,10 @@
         <script src="{{ asset('js2/admin.js') }}"></script>
      <link rel="stylesheet" href="{{ asset('assets/demo/') }}"> <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+      
 
-
-
+        <link rel="stylesheet" href="{{ asset('css2/select2.min.css') }}">
+       
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
@@ -201,7 +201,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+        <script src="{{ asset('js2/select2.min.js') }}"></script>
 
   <script>
     $(document).ready(function() {
