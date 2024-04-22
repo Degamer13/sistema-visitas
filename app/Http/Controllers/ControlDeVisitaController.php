@@ -7,6 +7,15 @@ use App\Models\ControlDeVisita;
 use App\Models\Visita;
 class ControlDeVisitaController extends Controller
 {
+
+    function __construct()
+    {
+         $this->middleware('permission:horas-list|horas-create|horas-edit|horas-delete')->only('index');
+         $this->middleware('permission:horas-create', ['only' => ['create','store']]);
+         $this->middleware('permission:horas-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:horas-delete', ['only' => ['destroy']]);
+    }
+
     public function index(Request $request)
     {
         $cedula = $request->input('cedula');

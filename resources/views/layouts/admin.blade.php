@@ -132,7 +132,9 @@
 
 
             </div>
-
+            @can('horas-list')
+                
+           
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsiss" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-child fa-fw"></i></div>
                          Control de Entradas y Salidad
@@ -144,17 +146,21 @@
                             <li>
 
 
-
-
-
+                                @can('horas-create')
+                 
                                 <a class="dropdown-item" href="{{ route('controles.create') }}">Registrar Entradas y Salidas</a></li>
-                               <li>
+                                @endcan
+                                 <li>
+                                    @can('horas-list')
+                                        
+                                   
+                                 <a class="dropdown-item" href="/controles">Visualizar Entradas y Salidas</a>
+                                </li>
+                                 @endcan
+                                </nav>
+                                @endcan
 
-                                 <a class="dropdown-item" href="/controles">Visualizar Entradas y Salidas</a></li>
-                        </nav>
-
-
-
+                            </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">

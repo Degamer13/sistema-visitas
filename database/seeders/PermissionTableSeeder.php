@@ -27,7 +27,11 @@
         'visita-list',
         'visita-create',
         'visita-edit',
-        'visita-delete'
+        'visita-delete',
+        'horas-list',
+        'horas-create',
+        'horas-edit',
+        'horas-delete'
         ];
 
         foreach ($permissions as $permission) {

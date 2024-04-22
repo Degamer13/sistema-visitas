@@ -58,8 +58,16 @@
                 <td>{{ $control->hora_salida }}</td>
                 <td>{{ $control->created_at }}</td>
                 <td>
-                    <!-- Acciones -->
+                  @can('horas-edit')
+                      
+                  <!-- Acciones -->
                     <a href="{{ route('controles.edit', $control->id) }}" class="btn btn-primary "><i class='fas fa-pen'></i></a>
+                     @endcan 
+
+                     
+                     @can('horas-delete')
+                         
+                    
                     <form method="POST" action="{{ route('controles.destroy', $control->id) }}" style="display:inline">
                         @csrf
                         @method('DELETE')
@@ -67,6 +75,7 @@
                             <i class='fas fa-trash-alt'></i>
                         </button>
                     </form>
+                    @endcan
                 </td>
             </tr>
             @endforeach
