@@ -8,7 +8,7 @@
     </ol>
 
     <div class="row justify-content-center">
-
+coso
         <div class="col-md-12 my-4">
 <div class="alert alert-primary alert-dismissible fade show" role="alert">
   <strong>Bienvenido {{ Auth::user()->name }}!</strong>  @if (session('status'))
