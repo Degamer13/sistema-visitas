@@ -22,11 +22,12 @@ class PDFService implements IPDF
 
         // Coordenadas para centrar la tabla en la página
         $centro_x = ($this->_pdf->GetPageWidth() - $ancho_tabla) / 2;
+        $this->_pdf->SetFillColor(0, 0, 128); // Azul oscuro
         $this->_pdf->AddPage();
         $this->_pdf->AliasNbPages();
         $this->_pdf->SetFont('Arial', 'B', 16);
         $this->_pdf->Cell(0, 10, "TABLA DE " . $name, 0, 1, 'C');
-        $this->_pdf->SetTextColor(255, 0, 0);
+        $this->_pdf->SetTextColor(255);
         $this->_pdf->SetFont("Arial", "B", 14);
 
         foreach ($objetos as $objeto) {
@@ -53,14 +54,14 @@ class PDFService implements IPDF
                 } else {
                     $key = ucfirst(join(" de ", preg_split("/_/", $key)));
                 }
-                $this->_pdf->Cell(strlen($key) * 4, 10, $key, 1, 0, "C");
+                $this->_pdf->Cell(strlen($key) * 4, 10, $key, 1, 0, "C", true);
             }
             break;
         }
         $this->_pdf->Ln();
         $this->_pdf->SetFont("Arial", "", 12);
+        $this->_pdf->SetTextColor(0);
 
-        $this->_pdf->SetTextColor(0, 0, 255);
         $count = 0;
         foreach ($objetos as $objeto) {
             $count++;
