@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Visita;
+use App\Service\PDFService;
 use Illuminate\Http\Request;
 
 
@@ -15,10 +16,18 @@ class VisitaController extends Controller
          $this->middleware('permission:visita-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:visita-delete', ['only' => ['destroy']]);
     }
-    public function index(Request $request)
+    public function index(Request $request, PDFService $pdf)
     {
         $buscarpor=$request->get('buscarpor');
         $visitas = Visita::where('cedula','like','%'.$buscarpor.'%')->paginate(5);
+        if($request->get("action") == "pdf"){
+            $map = $visitas->items();
+            $collection = collect($map);
+            $coa = $collection->map(function ($item) {
+                return $item->attributesToArray();
+            });
+            $pdf->TablaGenerica($coa->toArray(), "VISITAS", false );
+        }
         return view('visitas.index',compact('visitas', 'buscarpor'));
 
 

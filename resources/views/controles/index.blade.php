@@ -31,7 +31,7 @@
                 <button class="btn btn-success" name="action" value="search"  id="button-addon2" type="submit"><i class='fas fa-search'></i></button>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-warning" name="action" value="pdf"  id="button-addon2" type="submit"><i class='fas fa-pdf'></i></button>
+                <button class="btn btn-warning" name="action" value="pdf"  id="button-addon2" type="submit"><i class='fas fa-file'></i></button>
             </div>
         </div>
     </form>

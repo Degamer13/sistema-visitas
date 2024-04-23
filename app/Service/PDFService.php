@@ -6,6 +6,8 @@ use App\FPDF\PDF;
 use App\Interface\IPDF;
 use Fpdf\Fpdf;
 
+use function PHPUnit\Framework\matchesRegularExpression;
+
 class PDFService implements IPDF
 {
     private Fpdf $_pdf;
@@ -13,11 +15,10 @@ class PDFService implements IPDF
     {
         $this->_pdf = new PDF('P', 'mm', 'A3');
     }
-    public function TablaGenerica(array $objetos, string $name): void
+    public function TablaGenerica(array $objetos, string $name, bool $time): void
     {
         $name = strtoupper($name);
-        // Anchura de la tabla
-        $ancho_tabla = 200 ;
+        $ancho_tabla = 200; // Por ejemplo
 
         // Coordenadas para centrar la tabla en la página
         $centro_x = ($this->_pdf->GetPageWidth() - $ancho_tabla) / 2;
@@ -27,11 +28,32 @@ class PDFService implements IPDF
         $this->_pdf->Cell(0, 10, "TABLA DE " . $name, 0, 1, 'C');
         $this->_pdf->SetTextColor(255, 0, 0);
         $this->_pdf->SetFont("Arial", "B", 14);
+
         foreach ($objetos as $objeto) {
-            $this->_pdf->SetX($centro_x);
+            $countp = 0;
+            if (!$time) {
+                unset($objeto["created_at"]);
+            }
             foreach ($objeto as $key => $value) {
 
-                $this->_pdf->Cell(40, 10, $key, 1, 0, "C");
+                $countp++;
+            }
+            break;
+        }
+
+        foreach ($objetos as $objeto) {
+            if ($countp < 6) {
+                $this->_pdf->SetX($centro_x);
+            }
+            foreach ($objeto as $key => $value) {
+                if ($key == "created_at") {
+                    $key = ucfirst("Creado En");
+                } else if ($key == "updated_at") {
+                    $key = ucfirst("Actualizado En");
+                } else {
+                    $key = ucfirst(join(" de ", preg_split("/_/", $key)));
+                }
+                $this->_pdf->Cell(strlen($key) * 4, 10, $key, 1, 0, "C");
             }
             break;
         }
@@ -42,15 +64,20 @@ class PDFService implements IPDF
         $count = 0;
         foreach ($objetos as $objeto) {
             $count++;
-            $this->_pdf->SetX($centro_x);
+
+
+            if ($countp < 6) {
+                $this->_pdf->SetX($centro_x);
+            }
             foreach ($objeto as $key => $value) {
-
-
-                if ($key == "created_at" || $key == "updated_at") {
-                    $this->_pdf->Cell(40, 10, preg_split("/T/", $value)[0], 1, 0, "C");
+                if ($key == "created_at") {
+                    $key = "CREADO EN";
+                } else if ($key == "updated_at") {
+                    $key = "ACTUALIZADO EN";
                 } else {
-                    $this->_pdf->Cell(40, 10,  $value, 1, 0, "C");
+                    $key = strtoupper(join(" de ", preg_split("/_/", $key)));
                 }
+                $this->_pdf->Cell(strlen($key) * 4, 10, preg_split("/T/", $value)[0] ?? $value, 1, 0, "C");
             }
             if ($count == 10) {
                 $this->_pdf->AddPage();
@@ -59,7 +86,6 @@ class PDFService implements IPDF
 
             $this->_pdf->Ln();
         }
-
         $this->_pdf->Output('D', 'miarchivo.pdf', true);
         $this->_pdf->Close();
     }

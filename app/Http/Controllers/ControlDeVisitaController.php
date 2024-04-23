@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ControlDeVisita;
 use App\Models\Visita;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 
 class ControlDeVisitaController extends Controller
 {
@@ -48,7 +49,7 @@ class ControlDeVisitaController extends Controller
             $coa = $collection->map(function ($item) {
                 return $item->attributesToArray();
             });
-            $pdf->TablaGenerica($coa->toArray(), "VISITAS DE ". $controles[0]->visita->nombre . " " .$controles[0]->visita->apellido  );
+            $pdf->TablaGenerica($coa->toArray(), "VISITAS DE ". $controles[0]->visita->nombre . " " .$controles[0]->visita->apellido, true  );
         }
         // Devolver la vista con los resultados de la consulta
         return view('controles.index', compact('controles', 'cedula', 'fechaInicio', 'fechaFin'));
