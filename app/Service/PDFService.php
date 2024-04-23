@@ -51,7 +51,9 @@ class PDFService implements IPDF
                     $key = ucfirst("Creado En");
                 } else if ($key == "updated_at") {
                     $key = ucfirst("Actualizado En");
-                } else {
+                }
+                
+                 else {
                     $key = ucfirst(join(" de ", preg_split("/_/", $key)));
                 }
                 $this->_pdf->Cell(strlen($key) * 4, 10, $key, 1, 0, "C", true);

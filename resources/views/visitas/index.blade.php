@@ -41,8 +41,9 @@
                 <th>Cedula</th>
                 <th>Instituto</th>
                 <th>Descripción</th>
-                <th>Entrada</th>
-                <th>Salida</th>
+                <th>Fecha de Registro</th>
+                <th>Fecha de Actualización</th>
+                <th>Salida de Institución</th>
                 <th width="280px">Acciones</th>
             </tr>
             @foreach ($visitas as $visita)
@@ -53,6 +54,7 @@
                     <td>{{ $visita->instituto }}</td>
                     <td>{{ $visita->descripcion }}</td>
                     <td>{{ $visita->created_at }}</td>
+                    <td>{{ $visita->updated_at }}</td>
                     <td>{{ $visita->salida }}</td>
                     <td>
                         <a href="{{ route('visitas.show', $visita->id) }}" class="btn btn-info "><i

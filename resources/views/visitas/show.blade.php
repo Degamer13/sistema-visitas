@@ -15,8 +15,9 @@
                         <p><strong>Cedula:</strong> {{ $visita->cedula }}</p>
                         <p><strong>Instituto:</strong> {{ $visita->instituto }}</p>
                         <p><strong>Descripción:</strong> {{ $visita->descripcion }}</p>
-                        <p><strong>Entrada:</strong> {{ $visita->created_at }}</p>
-                        <p><strong>Salida:</strong> {{ $visita->salida }}</p>
+                        <p><strong>Fecha de Registro:</strong> {{ $visita->created_at }}</p>
+                        <p><strong>Fecha de Actualización:</strong> {{ $visita->updated_at }}</p>
+                        <p><strong>Salida De Institución:</strong> {{ $visita->salida }}</p>
 
 
                         @if ($salidaHoy)

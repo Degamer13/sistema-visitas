@@ -50,6 +50,7 @@
                 <th>Hora de Entrada</th>
                 <th>Hora de Salida</th>
                 <th>Fecha de Registro</th>
+                <th>Fecha de Actualización</th>
                 <th width="280px">Acciones</th>
             </tr>
             @foreach ($controles as $control)
@@ -59,6 +60,7 @@
                 <td>{{ $control->hora_entrada }}</td>
                 <td>{{ $control->hora_salida }}</td>
                 <td>{{ $control->created_at }}</td>
+                <td>{{ $control->updated_at }}</td>
                 <td>
                   @can('horas-edit')
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Visita;
 use App\Service\PDFService;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 
 class VisitaController extends Controller
@@ -57,8 +58,14 @@ class VisitaController extends Controller
     {
         $visita = Visita::findOrFail($id);
 
-        // Verificar si la salida es igual a la fecha actual
-        $salidaHoy = $visita->salida == now()->toDateString();
+      // Obtener la fecha actual como un objeto Carbon
+    $fechaActual = Carbon::today();
+
+    // Obtener la fecha de salida de la visita como un objeto Carbon
+    $fechaSalida = Carbon::parse($visita->salida);
+
+    // Verificar si la fecha de salida es igual o anterior a la fecha actual
+    $salidaHoy = $fechaSalida->lte($fechaActual);
 
         return view('visitas.show', compact('visita', 'salidaHoy'));
     }

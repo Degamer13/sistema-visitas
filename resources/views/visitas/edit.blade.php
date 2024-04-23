@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="cantidad">Salida</label>
+                                <label for="cantidad">Salida de Institución</label>
                                 <input type="date" name="salida" id="salida" class="form-control" value="{{ $visita->salida }}">
                             </div>
 
