@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Interface\IPDF;
 use Illuminate\Http\Request;
 use App\Models\ControlDeVisita;
 use App\Models\Visita;
+use Illuminate\Http\RedirectResponse;
+
 class ControlDeVisitaController extends Controller
 {
 
@@ -16,12 +19,11 @@ class ControlDeVisitaController extends Controller
          $this->middleware('permission:horas-delete', ['only' => ['destroy']]);
     }
 
-    public function index(Request $request)
+    public function index(Request $request, IPDF $pdf)
     {
         $cedula = $request->input('cedula');
         $fechaInicio = $request->input('fecha_inicio');
         $fechaFin = $request->input('fecha_fin');
-
         // Consulta inicial sin aplicar filtros
         $query = ControlDeVisita::with('visita');
 
@@ -40,7 +42,14 @@ class ControlDeVisitaController extends Controller
 
         // Ejecutar la consulta paginada
         $controles = $query->paginate(10);
-
+        if($request->get("action") == "pdf"){
+            $map = $controles->items();
+            $collection = collect($map);
+            $coa = $collection->map(function ($item) {
+                return $item->attributesToArray();
+            });
+            $pdf->TablaGenerica($coa->toArray(), "VISITAS DE ". $controles[0]->visita->nombre . " " .$controles[0]->visita->apellido  );
+        }
         // Devolver la vista con los resultados de la consulta
         return view('controles.index', compact('controles', 'cedula', 'fechaInicio', 'fechaFin'));
     }
@@ -81,7 +90,7 @@ class ControlDeVisitaController extends Controller
         $controles = Visita::all();
         // Obtener el ControlDeVisita por su ID
         $control = ControlDeVisita::findOrFail($id);
-    
+
         // Devolver la vista de edición con los datos del ControlDeVisita
         return view('controles.edit', compact('controles', 'control'));
     }
