@@ -11,7 +11,7 @@ class ControlDeVisita extends Model
     protected $table = 'control_visitas';
     protected $primaryKey = 'id'; // El nombre correcto de la propiedad es primaryKey, no primarikey
     protected $fillable = ['id_visita', 'hora_entrada', 'hora_salida'];
-    
+    protected $hidden = ["id_visita"];
 
     public function visita()
     {

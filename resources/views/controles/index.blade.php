@@ -27,12 +27,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 mb-3">
-                <button class="btn btn-success"  id="button-addon2" type="submit"><i class='fas fa-search'></i></button>
+            <div class="col-md-6">
+                <button class="btn btn-success" name="action" value="search"  id="button-addon2" type="submit"><i class='fas fa-search'></i></button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-warning" name="action" value="pdf"  id="button-addon2" type="submit"><i class='fas fa-pdf'></i></button>
             </div>
         </div>
     </form>
-    
     @if (Session::get('success'))
     <div class="alert alert-success mt-2 alert-dismissible fade show" role="alert"">
         <strong>{{Session::get('success')}}</strong>
@@ -59,15 +61,15 @@
                 <td>{{ $control->created_at }}</td>
                 <td>
                   @can('horas-edit')
-                      
+
                   <!-- Acciones -->
                     <a href="{{ route('controles.edit', $control->id) }}" class="btn btn-primary "><i class='fas fa-pen'></i></a>
-                     @endcan 
+                     @endcan
 
-                     
+
                      @can('horas-delete')
-                         
-                    
+
+
                     <form method="POST" action="{{ route('controles.destroy', $control->id) }}" style="display:inline">
                         @csrf
                         @method('DELETE')
